@@ -20,6 +20,9 @@ class ExtractType extends AbstractType
         $builder
             ->add('pattern', TextType::class, [
                 'required' => true,
+                'attr' => [
+                    'placeholder' => 'Aminoacids and asterisks. Exemple: H***M**M**M*H',
+                ]
             ])
             ->add('blastFile', FileType::class, [
                 'required' => true,
