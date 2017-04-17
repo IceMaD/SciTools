@@ -8,6 +8,7 @@ use PHPExcel_Style;
 use PHPExcel_Style_Alignment;
 use PHPExcel_Worksheet;
 use PHPExcel_Writer_Excel2007;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\File;
 
 /**
@@ -77,6 +78,12 @@ class XlsExportManager
         $sheet->fromArray($data, null, 'A2', true);
 
         $this->autoSize($sheet);
+
+        $fileSystem = new Filesystem();
+
+        if ($fileSystem->exists($path)) {
+            $fileSystem->remove($path);
+        }
 
         $writer = new PHPExcel_Writer_Excel2007($book);
         $writer->save($path);
