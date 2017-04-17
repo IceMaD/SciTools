@@ -3,11 +3,11 @@ lock '3.7.1'
 
 set :use_sudo, false
 
-set :application, 'abc'
-set :repo_url, 'git@github.com:IceMaD/abc_user_manager.git'
+set :application, 'SciTools'
+set :repo_url, 'git@github.com:IceMaD/SciTools.git'
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, '/var/www/abc'
+set :deploy_to, '/var/www/SciTools'
 
 # Default value for :linked_files is []
 append :linked_files, 'app/config/parameters.yml'
