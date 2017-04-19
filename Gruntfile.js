@@ -11,7 +11,7 @@ module.exports = function(grunt) {
             .script('App', [
                 'Config',
             ])
-
+            .style('App', [])
     }));
 
     grunt.registerTask('default', ['symfony']);

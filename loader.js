@@ -133,34 +133,35 @@ module.exports = function(grunt) {
     });
 
     const builder = {
-        style: function(task) {
+        style: function(folder, watches) {
 
-            // // Register style tasks
-            // grunt_configuration.sass[task] = configuration.sass(file);
-            // grunt_configuration.postcss[task] = configuration.postcss(file);
-            // grunt_configuration.watch[task + '_style'] = configuration.watchStyle(task, file);
-            //
-            // if (Array.isArray(watches)) {
-            //     for (let file of watches) {
-            //         grunt_configuration.watch[task + '_style'].files.push(
-            //             helper.path.scss(file)
-            //         )
-            //     }
-            // }
+            const index = `${folder}/index`;
+            const watch = `style::${folder}`;
+
+            grunt_configuration.sass[folder] = configuration.sass(index);
+            grunt_configuration.postcss[folder] = configuration.postcss(index);
+            grunt_configuration.watch[watch] = configuration.watchStyle(folder, index);
+
+            if (Array.isArray(watches)) {
+                for (let file of watches) {
+                    grunt_configuration.watch[watch].files.push(helper.path.scss(file))
+                }
+            }
 
             return builder;
         },
         script: function(folder, watches) {
 
             const index = `${folder}/index`;
+            const watch = `script::${folder}`;
 
             grunt_configuration.browserify[folder] = configuration.browserify(index);
             grunt_configuration.uglify[folder] = configuration.uglify(index);
-            grunt_configuration.watch[folder + '_script'] = configuration.watchScriptFolder(folder, index);
+            grunt_configuration.watch[watch] = configuration.watchScriptFolder(folder, index);
 
             if (Array.isArray(watches)) {
                 for (let file of watches) {
-                    grunt_configuration.watch[folder + '_script'].files.push(helper.path.sourceScript(file))
+                    grunt_configuration.watch[watch].files.push(helper.path.sourceScript(file))
                 }
             }
 
