@@ -1,5 +1,20 @@
 module.exports = ['$scope', function ($scope) {
 
+    $scope.$watch('query', (query) => {
+        if (!query) {
+            $scope.filtered_hits = $scope.blast.iteration.hits;
+
+            return;
+        }
+
+        const pattern = new RegExp(query.replace(/\*/g, '[A-Z]'));
+
+        $scope.filtered_hits = $scope.blast.iteration.hits
+            .filter(function(hit) {
+                return hit.hsp.hitSequence.match(pattern)
+            })
+    });
+
     $scope.blast = {
         "program": "blastp",
         "version": "BLASTP 2.6.1+",

@@ -2,10 +2,10 @@
     <blast-uploader ng-show="!blast" export-value-in="blast"></blast-uploader>
 
     <div ng-show="blast">
-        <div dir-paginate="hit in blast.iteration.hits | itemsPerPage: 10">
-            <pre class="text">
-                {{ hit }}
-            </pre>
+        <input type="text" ng-model="query"><strong>H***M**M**M*H</strong>
+
+        <div dir-paginate="hit in filtered_hits |itemsPerPage: 10">
+            <hit value="hit"></hit>
         </div>
 
         <dir-pagination-controls boundary-links="true" template-url="Directive/Pagination.html"></dir-pagination-controls>
