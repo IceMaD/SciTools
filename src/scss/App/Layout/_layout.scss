@@ -1,0 +1,14 @@
+@include component(layout) {
+
+  display: flex;
+  height: 100%;
+
+  @include child(sidebar) {
+    flex: 0 0 15rem;
+  }
+
+  @include child(content) {
+    flex: 1 1 auto;
+  }
+
+}

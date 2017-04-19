@@ -1,0 +1,9 @@
+$theme: () !default;
+
+@function theme($themeVar, $defaultValue) {
+  @if map_has_key($theme, $themeVar) {
+    @return map_get($theme, $themeVar);
+  }
+
+  @return $defaultValue;
+}

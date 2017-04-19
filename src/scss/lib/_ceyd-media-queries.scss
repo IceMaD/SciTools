@@ -1,0 +1,57 @@
+$breakpoint-from-phablet: 480px;
+$breakpoint-from-tablet: 768px;
+$breakpoint-from-netbook: 1024px;
+$breakpoint-from-laptop: 1280px;
+$breakpoint-from-desktop: 1600px;
+$breakpoint-from-television: 1920px;
+
+$breakpoint-on-phone: ($breakpoint-from-phablet -1);
+$breakpoint-to-phablet: ($breakpoint-from-tablet -1);
+$breakpoint-to-tablet: ($breakpoint-from-netbook -1);
+$breakpoint-to-netbook: ($breakpoint-from-laptop -1);
+$breakpoint-to-laptop: ($breakpoint-from-desktop -1);
+$breakpoint-to-desktop: ($breakpoint-from-television -1);
+
+$ceyd-media-queries: (
+  on-phone: '(max-width: #{$breakpoint-on-phone})',
+
+  from-phablet: '(min-width: #{$breakpoint-from-phablet})',
+  on-phablet: '(min-width: #{$breakpoint-from-phablet} and (max-width: #{$breakpoint-to-phablet})',
+  to-phablet: '(max-width: #{$breakpoint-to-phablet})',
+
+  from-netbook: '(min-width: #{$breakpoint-from-netbook})',
+  on-netbook: '(min-width: #{$breakpoint-from-netbook} and (max-width: #{$breakpoint-to-netbook})',
+  to-netbook: '(max-width: #{$breakpoint-to-netbook})',
+
+  from-tablet: '(min-width: #{$breakpoint-from-tablet})',
+  on-tablet: '(min-width: #{$breakpoint-from-tablet} and (max-width: #{$breakpoint-to-tablet})',
+  to-tablet: '(max-width: #{$breakpoint-to-tablet})',
+
+  from-laptop: '(min-width: #{$breakpoint-from-laptop})',
+  on-laptop: '(min-width: #{$breakpoint-from-laptop} and (max-width: #{$breakpoint-to-laptop})',
+  to-laptop: '(max-width: #{$breakpoint-to-laptop})',
+
+  from-desktop: '(min-width: #{$breakpoint-from-desktop})',
+  on-desktop: '(min-width: #{$breakpoint-from-desktop} and (max-width: #{$breakpoint-to-desktop})',
+  to-desktop: '(max-width: #{$breakpoint-to-desktop})',
+
+  from-television: '(min-width: #{$breakpoint-from-television})',
+);
+
+@mixin on-phone        { @media #{map_get($ceyd-media-queries, on-phone)}        {@content;} }
+@mixin from-phablet    { @media #{map_get($ceyd-media-queries, from-phablet)}    {@content; }}
+@mixin on-phablet      { @media #{map_get($ceyd-media-queries, on-phablet)}      {@content; }}
+@mixin to-phablet      { @media #{map_get($ceyd-media-queries, to-phablet)}      {@content; }}
+@mixin from-netbook    { @media #{map_get($ceyd-media-queries, from-netbook)}    {@content; }}
+@mixin on-netbook      { @media #{map_get($ceyd-media-queries, on-netbook)}      {@content; }}
+@mixin to-netbook      { @media #{map_get($ceyd-media-queries, to-netbook)}      {@content; }}
+@mixin from-tablet     { @media #{map_get($ceyd-media-queries, from-tablet)}     {@content; }}
+@mixin on-tablet       { @media #{map_get($ceyd-media-queries, on-tablet)}       {@content; }}
+@mixin to-tablet       { @media #{map_get($ceyd-media-queries, to-tablet)}       {@content; }}
+@mixin from-laptop     { @media #{map_get($ceyd-media-queries, from-laptop)}     {@content; }}
+@mixin on-laptop       { @media #{map_get($ceyd-media-queries, on-laptop)}       {@content; }}
+@mixin to-laptop       { @media #{map_get($ceyd-media-queries, to-laptop)}       {@content; }}
+@mixin from-desktop    { @media #{map_get($ceyd-media-queries, from-desktop)}    {@content; }}
+@mixin on-desktop      { @media #{map_get($ceyd-media-queries, on-desktop)}      {@content; }}
+@mixin to-desktop      { @media #{map_get($ceyd-media-queries, to-desktop)}      {@content; }}
+@mixin from-television { @media #{map_get($ceyd-media-queries, from-television)} {@content; }}

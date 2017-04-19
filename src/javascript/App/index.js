@@ -11,14 +11,15 @@ angular
         'ngFileUpload'
     ])
 
-    .directive('blastUpload', ['Parser', function (Parser) {
+    .directive('blastUploader', ['Parser', function (Parser) {
         return {
             restrict: 'E',
             scope: {
                 blast: '=exportValueIn'
             },
-            templateUrl: 'directive/blastUpload.html',
-            controller: ['$scope', function ($scope) {
+            templateUrl: 'directive/blastUploader.html',
+            controller: ['$scope', '$element', function ($scope, $element) {
+                $element.addClass('blast-uploader');
 
                 $scope.loading = false;
 

@@ -1,0 +1,20 @@
+@include component(blast-uploader) {
+
+  @include child(dropzone) {
+
+    min-height: 10rem;
+    padding: 1rem;
+    box-shadow: shadow-border(all, #ccc);
+    border-radius: .3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @include child(image) {
+  }
+
+  @include child(text) {
+
+  }
+}

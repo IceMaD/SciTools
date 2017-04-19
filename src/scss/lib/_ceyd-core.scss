@@ -1,0 +1,81 @@
+$ceyd-text-color: #222 !default;
+$ceyd-default-font-family: Arial, sans-serif !default;
+$ceyd-prefix: false !default;
+
+%scope-reset {
+  $color: $ceyd-text-color;
+  $font-family: $ceyd-default-font-family;
+
+  display: block;
+  color: $color;
+  direction: ltr;
+  font-family: $font-family;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 300;
+  letter-spacing: 0;
+  flex-grow: 0;
+  flex-shrink: 0;
+  line-height: 1;
+  text-align: left;
+  text-indent: 0;
+  text-transform: none;
+  visibility: visible;
+  white-space: normal;
+  word-spacing: normal;
+}
+
+@mixin component($name) {
+
+  @if & {
+    @error 'Component should not have a parent';
+  }
+
+  @if $ceyd-prefix {
+    .#{$ceyd-prefix}-#{$name} {
+      @extend %scope-reset;
+      @content
+    }
+  } @else {
+    .#{$name} {
+      @extend %scope-reset;
+      @content
+    }
+  }
+}
+
+@mixin child($name) {
+
+  @if not & {
+    @error 'Children should have a parent';
+  }
+
+  &_#{$name} {
+    @content
+  }
+}
+
+$ceyd-media-queries: () !default;
+
+@mixin modifier($name, $media: ()) {
+
+  @if not & {
+    @error 'Modifiers should have a parent';
+  }
+
+  &.\--#{'' + $name} {
+    @content
+  }
+
+  @each $medium in $media {
+    @if not map_has_key($ceyd-media-queries, $medium) {
+      @error 'Unable to find media query #{$medium} for #{&}.--#{$name}'
+    }
+
+    @media #{map_get($ceyd-media-queries, $medium)} {
+      &.\--#{$name}\@#{$medium} {
+        @content
+      }
+    }
+  }
+}

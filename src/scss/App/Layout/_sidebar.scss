@@ -1,0 +1,11 @@
+@include component(sidebar) {
+
+  background-color: #222;
+  color: #ddd;
+  height: 100%;
+
+  @include child(item) {
+    padding: 1rem;
+  }
+
+}

@@ -72,11 +72,11 @@ module.exports = function(grunt) {
             }
         }),
 
-        watchStyle: (task, file) => ({
+        watchStyleFolder: (folder) => ({
             files: [
-                helper.path.scss(file)
+                helper.path.scss(`${folder}/**/*`)
             ],
-            tasks: helper.tasks(task, ['sass', 'postcss'])
+            tasks: helper.tasks(folder, ['sass', 'postcss'])
         }),
 
         watchScriptFolder: (folder) => ({
@@ -140,7 +140,7 @@ module.exports = function(grunt) {
 
             grunt_configuration.sass[folder] = configuration.sass(index);
             grunt_configuration.postcss[folder] = configuration.postcss(index);
-            grunt_configuration.watch[watch] = configuration.watchStyle(folder, index);
+            grunt_configuration.watch[watch] = configuration.watchStyleFolder(folder);
 
             if (Array.isArray(watches)) {
                 for (let file of watches) {
@@ -157,7 +157,7 @@ module.exports = function(grunt) {
 
             grunt_configuration.browserify[folder] = configuration.browserify(index);
             grunt_configuration.uglify[folder] = configuration.uglify(index);
-            grunt_configuration.watch[watch] = configuration.watchScriptFolder(folder, index);
+            grunt_configuration.watch[watch] = configuration.watchScriptFolder(folder);
 
             if (Array.isArray(watches)) {
                 for (let file of watches) {
