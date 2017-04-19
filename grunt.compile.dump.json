@@ -1,0 +1,36 @@
+{
+	"sass": {},
+	"postcss": {},
+	"browserify": {
+		"App": {
+			"files": {
+				"web/assets/javascript/App/index.js": "src/javascript/App/index.js"
+			}
+		}
+	},
+	"uglify": {
+		"App": {
+			"files": {
+				"web/assets/javascript/App/index.min.js": "web/assets/javascript/App/index.js"
+			}
+		}
+	},
+	"watch": {
+		"twig": {
+			"files": [
+				"**/*.twig"
+			],
+			"tasks": []
+		},
+		"App_script": {
+			"files": [
+				"src/javascript/App/**/*.js",
+				"src/javascript/Config.js"
+			],
+			"tasks": [
+				"browserify:App",
+				"uglify:App"
+			]
+		}
+	}
+}

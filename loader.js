@@ -28,8 +28,8 @@ module.exports = function(grunt) {
                 interrupt: true,
                 livereload: true
             },
-            twig: {
-                files: ['**/*.twig'],
+            templates: {
+                files: ['**/*.html'],
                 tasks: []
             }
         }
