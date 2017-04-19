@@ -1,0 +1,14 @@
+<div class="strate">
+    <blast-uploader ng-show="!blast" export-value-in="blast"></blast-uploader>
+
+    <div ng-show="blast">
+        <div dir-paginate="hit in blast.iteration.hits | itemsPerPage: 10">
+            <pre class="text">
+                {{ hit }}
+            </pre>
+        </div>
+
+        <dir-pagination-controls boundary-links="true" template-url="Directive/Pagination.html"></dir-pagination-controls>
+    </div>
+
+</div>

@@ -8,7 +8,9 @@
   }
 
   @include child(content) {
+    min-width: 0;
+    max-height: 100%;
+    overflow-y: auto;
     flex: 1 1 auto;
   }
-
 }

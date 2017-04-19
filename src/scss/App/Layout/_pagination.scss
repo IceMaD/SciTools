@@ -1,0 +1,9 @@
+@include component(pagination) {
+
+  display: flex;
+  margin-left: -.5rem;
+
+  @include child(action) {
+    margin-left: .5rem;
+  }
+}

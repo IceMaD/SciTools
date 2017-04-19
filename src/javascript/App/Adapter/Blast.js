@@ -1,5 +1,5 @@
 require('angular')
-    .module('tools.adapter.blast', [])
+    .module('sci_tools.adapter.blast', [])
     .factory('BlastAdapter', [function () {
 
         function fromRawToBlast(sourceBlast) {

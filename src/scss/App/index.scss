@@ -10,8 +10,21 @@ body, html {
   height: 100%;
 }
 
+$default-text-color: #222;
+$default-border-color: #ccc;
+
+$main-background-color: #c57de2;
+$main-border-color: #9358b0;
+$main-text-color: #fff;
+
+$trapped-background-color: #222;
+$trapped-border-color: #000;
+$trapped-text-color: #ddd;
+
 @import "Layout/layout";
 @import "Layout/sidebar";
 @import "Layout/strate";
 @import "Layout/text";
+@import "Layout/pagination";
+@import "Layout/button";
 @import "Form/blast-uploader";

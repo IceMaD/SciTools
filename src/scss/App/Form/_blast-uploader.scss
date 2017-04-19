@@ -4,7 +4,7 @@
 
     min-height: 10rem;
     padding: 1rem;
-    box-shadow: shadow-border(all, #ccc);
+    box-shadow: shadow-border(all, $default-border-color);
     border-radius: .3rem;
     display: flex;
     justify-content: center;

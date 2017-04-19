@@ -1,0 +1,20 @@
+@include component(button) {
+  box-shadow: shadow-border(all, $default-border-color);
+  border-radius: .1rem;
+  padding: .4rem .9rem;
+  cursor: pointer;
+  text-decoration: none;
+  color: $default-text-color;
+  font-size: 1rem;
+
+  @include modifier(disabled) {
+    cursor: default;
+    color: $default-border-color;
+  }
+
+  @include modifier(active) {
+    box-shadow: shadow-border(all, $main-border-color);
+    background-color: $main-background-color;
+    color: $main-text-color;
+  }
+}

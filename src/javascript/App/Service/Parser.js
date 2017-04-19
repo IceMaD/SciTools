@@ -1,7 +1,7 @@
 require('../Adapter/Blast');
 require('angular')
-    .module('tools.service.parser', [
-        'tools.adapter.blast',
+    .module('sci_tools.service.parser', [
+        'sci_tools.adapter.blast',
     ])
     .factory('Parser', ['$q', 'BlastAdapter', function ($q, BlastAdapter) {
 

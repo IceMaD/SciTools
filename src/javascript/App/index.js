@@ -1,40 +1,14 @@
 let angular = require('angular');
 
 require('ng-file-upload');
-require('./../Config');
-require('./Service/Parser');
+require('./Routing');
+require('./Directive/BlastUploader');
+require('angular-utils-pagination');
 
 angular
-    .module('App', [
-        'Config',
-        'tools.service.parser',
-        'ngFileUpload'
-    ])
-
-    .directive('blastUploader', ['Parser', function (Parser) {
-        return {
-            restrict: 'E',
-            scope: {
-                blast: '=exportValueIn'
-            },
-            templateUrl: 'directive/blastUploader.html',
-            controller: ['$scope', '$element', function ($scope, $element) {
-                $element.addClass('blast-uploader');
-
-                $scope.loading = false;
-
-                $scope.$watch('file', function (file) {
-                    if (!file) {
-                        return
-                    }
-
-                    $scope.loading = true;
-
-                    Parser.parse(file).then(function (blast) {
-                        $scope.blast = blast;
-                        $scope.loading = false;
-                    })
-                });
-            }]
-        }
-    }]);
+    .module('sci_tools.app', [
+        'sci_tools.routing',
+        'sci_tools.directive.blast_uploader',
+        'ngFileUpload',
+        'angularUtils.directives.dirPagination'
+    ]);
