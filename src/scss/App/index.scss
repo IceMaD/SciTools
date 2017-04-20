@@ -12,10 +12,11 @@ body, html {
 
 $default-text-color: #222;
 $default-border-color: #ccc;
+$light-border-color: #eee;
 
-$main-background-color: #c57de2;
-$main-border-color: #9358b0;
-$main-text-color: #fff;
+$main-trapped-background-color: #c57de2;
+$main-trapped-border-color: #9358b0;
+$main-text-color: #c57de2;
 
 $trapped-background-color: #222;
 $trapped-border-color: #000;
@@ -26,5 +27,7 @@ $trapped-text-color: #ddd;
 @import "Layout/strate";
 @import "Layout/text";
 @import "Layout/pagination";
+@import "Layout/hit";
 @import "Layout/button";
+@import "Layout/sequence-preview";
 @import "Form/blast-uploader";

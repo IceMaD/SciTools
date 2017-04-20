@@ -1,11 +1,13 @@
 @include component(button) {
   box-shadow: shadow-border(all, $default-border-color);
+  background-color: #fff;
   border-radius: .1rem;
   padding: .4rem .9rem;
   cursor: pointer;
   text-decoration: none;
   color: $default-text-color;
   font-size: 1rem;
+  border: none;
 
   @include modifier(disabled) {
     cursor: default;
@@ -13,8 +15,8 @@
   }
 
   @include modifier(active) {
-    box-shadow: shadow-border(all, $main-border-color);
-    background-color: $main-background-color;
-    color: $main-text-color;
+    box-shadow: shadow-border(all, $main-trapped-border-color);
+    background-color: $main-trapped-background-color;
+    color: $trapped-text-color;
   }
 }

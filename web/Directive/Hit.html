@@ -1,30 +1,36 @@
-accession: {{ hit.accession }}
-<br>
-definition: {{ hit.definition }}
-<br>
-number: {{ hit.hsp.number }}
-<br>
-bitScore: {{ hit.hsp.bitScore }}
-<br>
-score: {{ hit.hsp.score }}
-<br>
-evalue: {{ hit.hsp.evalue }}
-<br>
-query: {{ hit.hsp.query }}
-<br>
-hit: {{ hit.hsp.hit }}
-<br>
-identity: {{ hit.hsp.identity }}
-<br>
-positive: {{ hit.hsp.positive }}
-<br>
-gaps: {{ hit.hsp.gaps }}
-<br>
-alignmentLeft: {{ hit.hsp.alignmentLeft }}
-<!--<br>-->
-<!--querySequence: {{ hit.hsp.querySequence }}-->
-<!--<br>-->
-<!--hitSequence: {{ hit.hsp.hitSequence }}-->
-<!--<br>-->
-<!--midline: {{ hit.hsp.midline }}-->
-<hr>
+
+<div class="hit_header" ng-click="opened = !opened">
+    <p class="text">
+        {{ hit.species[0] }}
+    </p>
+</div>
+<div ng-show="opened">
+    <div class="hit_section">
+        <p class="text --emphasis">Species</p>
+        <p ng-repeat="specy in hit.species" class="text">
+            - {{ specy }}
+        </p>
+    </div>
+
+    <div class="hit_section">
+        <p class="text --emphasis">Identity</p>
+        <p class="text">
+            {{ hit.identity }}
+        </p>
+    </div>
+
+    <div class="hit_section">
+        <p class="text --emphasis">Accession</p>
+        <p class="text">
+            {{ hit.accession }}
+        </p>
+    </div>
+
+    <div class="hit_section" ng-show="hit.matchedSequence">
+        <p class="text --emphasis">Matched sequence</p>
+        <p class="text">
+            {{ hit.matchedSequence }}
+        </p>
+        <sequence-preview sequence="hit.hsp.hitSequence" match="hit.matchedSequence"></sequence-preview>
+    </div>
+</div>

@@ -4,6 +4,8 @@ require('angular')
 
         function fromRawToBlast(sourceBlast) {
 
+            let SpeciesExtractor = new RegExp(/\[([^\]]+)\]/g);
+
             let output = sourceBlast['BlastOutput'];
             let parameters = output['BlastOutput_param']['Parameters'];
             let iteration = output['BlastOutput_iterations']['Iteration'];
@@ -34,12 +36,42 @@ require('angular')
                         definition: iteration['Iteration_query-def'],
                         length: iteration['Iteration_query-len'],
                     },
-                    hits: hits.map(function (hit) {
-                        let hsp = hit['Hit_hsps']['Hsp'];
+                    hits: hits
+                        .reduce((hits, hit) => {
+                            if (angular.isArray(hit['Hit_hsps']['Hsp'])) {
+                                let splitted_hit_by_hsp = [];
+
+                                hit['Hit_hsps']['Hsp'].forEach(hsp => {
+                                    const hsps = {Hit_hsps: {Hsp: hsp}};
+
+                                    splitted_hit_by_hsp.push({...hit, ...hsps});
+                                });
+
+                                hits.push(...splitted_hit_by_hsp);
+
+                                return hits
+                            }
+
+                            hits.push(hit);
+
+                            return hits
+                        } ,[])
+                        .map(function (hit) {
+                        const hsp = hit['Hit_hsps']['Hsp'];
+                        const identity = Math.round(hsp['Hsp_identity'] * 100 / hsp['Hsp_align-len']);
+                        let definition = hit['Hit_def'];
+                        let species = [];
+                        let specy;
+
+                        while ((specy = SpeciesExtractor.exec(definition)) !== null) {
+                            species.push(specy[1])
+                        }
 
                         return {
                             accession: hit['Hit_accession'],
-                            definition: hit['Hit_def'],
+                            definition,
+                            identity,
+                            species: [...new Set(species)],
                             hsp: {
                                 number: hsp['Hsp_num'],
                                 bitScore: hsp['Hsp_bit-score'],

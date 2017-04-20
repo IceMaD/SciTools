@@ -1,4 +1,29 @@
 @include component(text) {
   font-size: 1rem;
+  margin: 1em 0;
   color: $default-text-color;
+
+  @include modifier(main) {
+    color: $main-text-color;
+  }
+
+  @include modifier(one-liner) {
+    white-space: nowrap;
+  }
+
+  @include modifier(inline) {
+    display: inline;
+  }
+
+  @include modifier(title) {
+    font-size: 1.5em;
+  }
+
+  @include modifier(emphasis) {
+    font-weight: bold;
+  }
+
+  @include modifier(small) {
+    font-size: .5em;
+  }
 }
