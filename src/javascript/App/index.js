@@ -5,6 +5,7 @@ require('./Routing');
 require('./Directive/BlastUploader');
 require('./Directive/Hit');
 require('./Directive/SequencePreview');
+require('./Storage/App');
 require('angular-utils-pagination');
 
 angular
@@ -14,5 +15,11 @@ angular
         'sci_tools.directive.hit',
         'sci_tools.directive.sequence_preview',
         'ngFileUpload',
-        'angularUtils.directives.dirPagination'
-    ]);
+        'angularUtils.directives.dirPagination',
+        'sci_tools.storage.app',
+    ])
+
+    .controller('AppController', ['$scope', 'AppStorage', function ($scope, AppStorage) {
+        AppStorage.autoBind($scope, 'app')
+    }])
+;

@@ -14,5 +14,5 @@ module.exports = function(grunt) {
             .style('App', [])
     }));
 
-    grunt.registerTask('default', ['symfony']);
+    grunt.registerTask('default', ['compile:watch']);
 };

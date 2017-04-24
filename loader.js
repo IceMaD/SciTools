@@ -97,7 +97,7 @@ module.exports = function(grunt) {
         grunt.task.run(tasks);
     }
 
-    grunt.task.registerTask('compile', 'Symfony bundle assets helper', function(command, option) {
+    grunt.task.registerTask('compile', 'Assets compiler', function(command, option) {
 
         if (arguments.length === 0) {
             return runAllTasks(false)

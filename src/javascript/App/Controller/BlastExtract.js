@@ -1,7 +1,12 @@
-module.exports = ['$scope', function ($scope) {
+module.exports = ['$scope', 'AppStorage', function ($scope, AppStorage) {
 
     $scope.$watch('blast', filter);
     $scope.$watch('query', filter);
+    $scope.$watch('name', function () {
+        AppStorage.setTitle($scope.name);
+    });
+
+    AppStorage.autoBind($scope);
 
     function filter() {
         if (!$scope.blast) {

@@ -12,7 +12,7 @@ require('angular')
                 name: 'blast_extract',
                 url: '/blast-extract',
                 templateUrl: 'Page/BlastExtract.html',
-                controller: require('./Controller/BlastExtractController'),
+                controller: require('./Controller/BlastExtract'),
             });
 
         /**

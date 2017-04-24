@@ -8,7 +8,8 @@ require('angular')
         return {
             restrict: 'E',
             scope: {
-                blast: '=exportValueIn'
+                blast: '=exportValueIn',
+                name: '=exportNameIn'
             },
             templateUrl: 'Directive/BlastUploader.html',
             controller: ['$scope', '$element', function ($scope, $element) {
@@ -25,6 +26,7 @@ require('angular')
 
                     Parser.parse(file).then(function (blast) {
                         $scope.blast = blast;
+                        $scope.name = file.name.replace('.xml', '');
                         $scope.loading = false;
                     })
                 });
