@@ -58,7 +58,7 @@ require('angular')
                         } ,[])
                         .map(function (hit) {
                         const hsp = hit['Hit_hsps']['Hsp'];
-                        const identity = Math.round(hsp['Hsp_identity'] * 100 / hsp['Hsp_align-len']);
+                        const identity = Math.round(parseInt(hsp['Hsp_identity']) * 100 / parseInt(hsp['Hsp_align-len']));
                         let definition = hit['Hit_def'];
                         let species = [];
                         let specy;

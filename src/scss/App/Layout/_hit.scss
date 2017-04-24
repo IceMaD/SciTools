@@ -15,8 +15,10 @@
   }
 
   @include child(section) {
+    margin: 0 1px;
     overflow: auto;
     padding: 0 1rem;
+    background-color: #fbfbfb;
     box-shadow: shadow-border(bottom, $light-border-color);
   }
 }

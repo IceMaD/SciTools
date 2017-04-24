@@ -20,10 +20,6 @@ module.exports = ['$scope', function ($scope) {
 
         $scope.filtered_hits = $scope.blast.iteration.hits
             .filter(hit => {
-                if (!hit.hsp.hitSequence) {
-                    console.log(hit);
-                }
-                
                 return hit.hsp.hitSequence.match(pattern);
             })
             .map(hit => {
