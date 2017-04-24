@@ -11,6 +11,11 @@
     white-space: nowrap;
   }
 
+  @include modifier(multi-line) {
+    white-space: normal;
+    word-wrap: break-word;
+  }
+
   @include modifier(inline) {
     display: inline;
   }
