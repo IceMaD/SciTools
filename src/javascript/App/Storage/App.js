@@ -2,7 +2,7 @@ const APP_STORAGE = 'sci_tools.storage.app';
 
 require('angular')
     .module(APP_STORAGE, [])
-    .service('AppStorage', ['$rootScope', function ($rootScope) {
+    .service('AppStorage', [function () {
         let app = {};
         let bound_scopes = [];
 

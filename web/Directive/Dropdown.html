@@ -1,0 +1,16 @@
+<div class="dropdown">
+    <div class="dropdown_item --current" ng-click="open()">
+        <p class="text">
+            <i class="fa fa-{{ icon }}"></i>
+        </p>
+    </div>
+    <div class="dropdown_inner --align-right" ng-show="opened">
+        <div class="dropdown_list">
+            <div ng-repeat="choice in choices" class="dropdown_item" ng-click="pick(choice) && close()">
+                <p class="text --one-liner">
+                    {{ choice.label }}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

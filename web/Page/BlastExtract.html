@@ -4,10 +4,18 @@
                     export-name-in="name"></blast-uploader>
 
     <div ng-show="blast">
-        <input type="text" ng-model="query">
 
-        <strong>{{ app.title }}</strong>
-        <strong>H***M**M**M*H</strong>
+        <div class="action-bar">
+            <input class="action-bar_search-bar" type="text" ng-model="query">
+            <div class="action-bar_title">
+                <p class="text --emphasis">
+                    {{ app.title }}
+                </p>
+            </div>
+            <div class="action-bar_action">
+                <dropdown icon="paint-brush" choices="colors.options" export-choice-in="colors.current"></dropdown>
+            </div>
+        </div>
 
         <div dir-paginate="hit in filtered_hits |itemsPerPage: 10">
             <hit value="hit"></hit>

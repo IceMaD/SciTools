@@ -15,8 +15,8 @@
   }
 
   @include modifier(active) {
-    box-shadow: shadow-border(all, $main-trapped-border-color);
-    background-color: $main-trapped-background-color;
+    box-shadow: shadow-border(all, darken($main-color, 20%));
+    background-color: darken($main-color, 10%);
     color: $trapped-text-color;
   }
 }

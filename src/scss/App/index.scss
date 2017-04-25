@@ -14,9 +14,7 @@ $default-text-color: #222;
 $default-border-color: #ccc;
 $light-border-color: #eee;
 
-$main-trapped-background-color: #c57de2;
-$main-trapped-border-color: #9358b0;
-$main-text-color: #c57de2;
+$main-color: #c57de2;
 
 $trapped-background-color: #222;
 $trapped-border-color: #000;
@@ -30,4 +28,6 @@ $trapped-text-color: #ddd;
 @import "Layout/hit";
 @import "Layout/button";
 @import "Layout/sequence-preview";
+@import "Layout/action-bar";
+@import "Layout/dropdown";
 @import "Form/blast-uploader";

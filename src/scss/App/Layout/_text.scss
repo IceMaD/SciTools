@@ -1,18 +1,20 @@
 @include component(text) {
   font-size: 1rem;
-  margin: 1em 0;
+  margin: .5em 0;
+  line-height: 1.2rem;
   color: $default-text-color;
 
-  @include modifier(main) {
-    color: $main-text-color;
-  }
-
   @include modifier(main-highlight) {
-    background-color: $main-text-color;
+    background-color: lighten($main-color, 20%);
+    padding: .1rem .2rem;
   }
 
   @include modifier(one-liner) {
     white-space: nowrap;
+  }
+
+  @include modifier(monospaced) {
+    font-family: monospace;
   }
 
   @include modifier(multi-line) {
