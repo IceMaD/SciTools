@@ -7,6 +7,10 @@
     color: $main-text-color;
   }
 
+  @include modifier(main-highlight) {
+    background-color: $main-text-color;
+  }
+
   @include modifier(one-liner) {
     white-space: nowrap;
   }

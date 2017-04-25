@@ -10,6 +10,7 @@ require('angular')
             templateUrl: 'Directive/Hit.html',
             controller: ['$scope', '$element', function ($scope, $element) {
                 $element.addClass('hit');
+                $scope.opened = 1;
             }]
         }
     }]);
