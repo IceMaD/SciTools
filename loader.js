@@ -1,6 +1,8 @@
 'use strict';
 module.exports = function(grunt) {
 
+    const DEVELOPMENT_MODE = grunt.option('dev');
+
     let grunt_configuration = {
         sass: {
             options: {
@@ -79,19 +81,32 @@ module.exports = function(grunt) {
             tasks: helper.tasks(folder, ['sass', 'postcss'])
         }),
 
-        watchScriptFolder: (folder) => ({
-            files: [
-                helper.path.sourceScript(`${folder}/**/*`)
-            ],
-            tasks: helper.tasks(folder, ['browserify', 'uglify'])
-        })
+        watchScriptFolder: (folder) => {
+
+            let tasks = ['browserify'];
+
+            if (!DEVELOPMENT_MODE) {
+                tasks.push('uglify')
+            }
+
+            return {
+                files: [
+                    helper.path.sourceScript(`${folder}/**/*`)
+                ],
+                tasks: helper.tasks(folder, tasks)
+            };
+        }
     };
 
-    function runAllTasks(watch) {
+    function runAllTasks({watch = false}) {
         let index, tasks = Object.keys(grunt_configuration);
 
         if (!watch && (index = tasks.indexOf('watch')) !== -1) {
-            tasks.splice(index);
+            tasks.splice(index, 1);
+        }
+
+        if (DEVELOPMENT_MODE && (index = tasks.indexOf('uglify')) !== -1) {
+            tasks.splice(index, 1);
         }
 
         grunt.task.run(tasks);
@@ -100,7 +115,7 @@ module.exports = function(grunt) {
     grunt.task.registerTask('compile', 'Assets compiler', function(command, option) {
 
         if (arguments.length === 0) {
-            return runAllTasks(false)
+            return runAllTasks({watch: false})
         }
 
         let commands = {
@@ -111,8 +126,8 @@ module.exports = function(grunt) {
 
                 grunt.file.write('grunt.compile.dump.json', dump)
             },
-            assets: () => runAllTasks(false),
-            watch: () => runAllTasks(true),
+            assets: () => runAllTasks({watch: false}),
+            watch: () => runAllTasks({watch: true}),
             help: function () {
 
                 function command(command, description) {
@@ -156,7 +171,9 @@ module.exports = function(grunt) {
             const watch = `script::${folder}`;
 
             grunt_configuration.browserify[folder] = configuration.browserify(index);
-            grunt_configuration.uglify[folder] = configuration.uglify(index);
+            if (!DEVELOPMENT_MODE) {
+                grunt_configuration.uglify[folder] = configuration.uglify(index);
+            }
             grunt_configuration.watch[watch] = configuration.watchScriptFolder(folder);
 
             if (Array.isArray(watches)) {
@@ -171,6 +188,11 @@ module.exports = function(grunt) {
 
     return {
         register: function(callback) {
+
+            if (DEVELOPMENT_MODE) {
+                grunt.log.warn('Running in dev mode without uglify')
+            }
+
             callback(builder);
 
             return grunt_configuration;
