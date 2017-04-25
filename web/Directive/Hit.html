@@ -10,6 +10,9 @@
         <p ng-repeat="specy in hit.species" class="text">
             - {{ specy }}
         </p>
+        <p class="text --small">
+            {{ hit.definition }}
+        </p>
     </div>
 
     <div class="hit_section">
@@ -21,9 +24,9 @@
 
     <div class="hit_section">
         <p class="text --emphasis">Accession</p>
-        <p class="text">
+        <a href="https://www.ncbi.nlm.nih.gov/protein/{{ hit.accession }}" target="_blank" class="text">
             {{ hit.accession }}
-        </p>
+        </a>
     </div>
 
     <div class="hit_section" ng-show="hit.matchedSequence">
