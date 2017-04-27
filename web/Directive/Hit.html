@@ -1,7 +1,16 @@
 <div class="hit_header" ng-click="opened = !opened">
-    <p class="text">
-        {{ hit.species[0] }}
-    </p>
+    <div class="action-bar">
+        <div class="action-bar_title">
+            <p class="text">
+                {{ hit.species[0] }}
+            </p>
+        </div>
+        <div class="action-bar_action" ng-show="opened">
+            <button class="button" ng-click="$event.stopPropagation(); download()">
+                <i class="fa fa-download"></i>
+            </button>
+        </div>
+    </div>
 </div>
 <div ng-show="opened">
     <div class="hit_section">

@@ -8,9 +8,7 @@
   background-color: #fff;
 
   @include child(header) {
-    box-shadow: shadow-border(bottom, $default-border-color);
     cursor: pointer;
-    padding: 0 1rem;
     overflow: auto;
   }
 

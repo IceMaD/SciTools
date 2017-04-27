@@ -71,6 +71,7 @@ require('angular')
                             accession: hit['Hit_accession'],
                             definition,
                             identity,
+                            id: hit['Hit_id'],
                             species: [...new Set(species)],
                             hsp: {
                                 number: hsp['Hsp_num'],
