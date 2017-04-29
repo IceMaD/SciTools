@@ -2,6 +2,8 @@ require('angular')
     .module('sci_tools.adapter.blast', [])
     .factory('BlastAdapter', [function () {
 
+        const id_regexp = new RegExp('^gi.([0-9]+).*$');
+
         function fromRawToBlast(sourceBlast) {
 
             let SpeciesExtractor = new RegExp(/\[([^\]]+)\]/g);
@@ -72,6 +74,7 @@ require('angular')
                             definition,
                             identity,
                             id: hit['Hit_id'],
+                            uid: hit['Hit_id'].match(id_regexp)[1],
                             species: [...new Set(species)],
                             hsp: {
                                 number: hsp['Hsp_num'],
