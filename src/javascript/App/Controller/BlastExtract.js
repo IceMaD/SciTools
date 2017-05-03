@@ -19,14 +19,10 @@ module.exports = ['$scope', 'AppStorage', 'SequenceColorStorage', '$localStorage
         SequenceColorStorage.setCurrent(newColor)
     });
 
-    $scope.blast = $localStorage.blast;
-
     function filter() {
         if (!$scope.blast) {
             return;
         }
-
-        $localStorage.blast = $scope.blast;
 
         let query = angular.copy($scope.query);
 
@@ -48,7 +44,4 @@ module.exports = ['$scope', 'AppStorage', 'SequenceColorStorage', '$localStorage
                 return { ...hit, matchedSequence: matchedSequence }
             })
     }
-
-    $scope.query = 'H***M**M**M*H';
-    AppStorage.setTitle('CopI');
 }];
