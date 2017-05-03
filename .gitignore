@@ -1,3 +1,4 @@
 /web/assets/
 /.idea/
 /node_modules/*
+/log
